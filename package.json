@@ -1,0 +1,9 @@
+{
+  "name": "mes-prets",
+  "version": "0.0.1",
+  "description": "Get started with cozy app.",
+  "cozy-type": "static",
+  "cozy-displayName": "Mes prêts",
+  "icon-path": "logo.png",
+  "author": "me"
+}

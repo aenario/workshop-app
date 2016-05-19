@@ -1,0 +1,32 @@
+body {
+    background-color: white;
+}
+
+#container {
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+form{
+    font-size: 2em
+}
+select, input{
+    font-size: 1em
+}
+
+input[type="submit"]{
+    display: inline-block;
+    margin-left: 2em;
+    background-color: rgb(70, 172, 71);
+    padding: 0.5em 2em;
+    border-width: 0px;
+    border-radius: 0.5em;
+}
+
+ul li a{
+    color: red;
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
+}
