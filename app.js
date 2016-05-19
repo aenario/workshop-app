@@ -23,6 +23,14 @@ function refreshLoans(){
     });
 }
 
+function deleteLoan(id){
+    cozysdk.destroy('loan', id, function(err) {
+        if(err) return alert(err);
+        refreshLoans();
+    });
+}
+
+
 var mapFunction = function(doc){
     emit(doc.id, doc)
 }
@@ -69,7 +77,9 @@ function renderLoanForm() {
 }
 
 function renderLoanLine(loan){
-    return '<li>J\'ai prêté ' + loan.object + ' à ' + contacts[loan.to].fn
+    return '<li>J\'ai prêté ' + loan.object + ' à ' + contacts[loan.to].fn +
+          '<a onClick="deleteLoan(\'' + loan._id + '\')">&times;</a></li>'
+
 }
 
 function renderLoansList(){
