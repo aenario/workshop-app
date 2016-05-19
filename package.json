@@ -7,6 +7,7 @@
   "icon-path": "logo.png",
   "author": "me",
   "cozy-permissions": {
-      "contact": "Choose friends to loan to."
+      "contact": "Choose friends to loan to.",
+      "loan": "Create and manage loans."
   }
 }

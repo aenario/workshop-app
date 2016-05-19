@@ -1,6 +1,7 @@
 // data management
 
 var contacts = {};
+var loans = {};
 
 cozysdk.queryView('contact', 'all', {include_docs: true}, function(err, entries){
     if(err) return alert(err);
@@ -11,11 +12,17 @@ cozysdk.queryView('contact', 'all', {include_docs: true}, function(err, entries)
     render();
 } );
 
+// event handlers
+
 function onFormSubmit(){
     event.preventDefault()
-    var what = document.getElementById('loan_thing').value
-    var to = document.getElementById('loan_to').value
-    console.log("prêt", what, to, contacts[to].fn);
+    var newLoan = {
+        object: document.getElementById('loan_thing').value,
+        to: document.getElementById('loan_to').value
+    }
+    cozysdk.create('loan', newLoan, function(err, created) {
+        console.log('loan created', created._id)
+    });
 }
 
 // rendering
