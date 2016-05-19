@@ -12,6 +12,26 @@ cozysdk.queryView('contact', 'all', {include_docs: true}, function(err, entries)
     render();
 } );
 
+function refreshLoans(){
+    cozysdk.queryView('loan', 'all', {include_docs: true}, function(err, entries){
+        if(err) return alert(err);
+        loans = {}
+        entries.forEach(function(entry){
+            loans[entry.id] = entry.doc
+        })
+        render()
+    });
+}
+
+var mapFunction = function(doc){
+    emit(doc.id, doc)
+}
+cozysdk.defineView('loan', 'all', mapFunction, function(err){
+    if(err) return alert(err);
+    refreshLoans()
+});
+
+
 // event handlers
 
 function onFormSubmit(){
@@ -22,6 +42,7 @@ function onFormSubmit(){
     }
     cozysdk.create('loan', newLoan, function(err, created) {
         console.log('loan created', created._id)
+        refreshLoans()
     });
 }
 
@@ -47,7 +68,21 @@ function renderLoanForm() {
         '<input type="submit" value="Ajouter" />'
 }
 
+function renderLoanLine(loan){
+    return '<li>J\'ai prêté ' + loan.object + ' à ' + contacts[loan.to].fn
+}
+
+function renderLoansList(){
+    return '<ul>' +
+        Object.keys(loans)
+              .map( function(id) { return loans[id] } )
+              .map( renderLoanLine ).join('') +
+    '</ul>'
+
+}
+
 function render(){
     document.getElementById('container').innerHTML =
-        renderLoanForm()
+        renderLoanForm()  +
+        renderLoansList()
 }
