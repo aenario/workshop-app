@@ -5,5 +5,8 @@
   "cozy-type": "static",
   "cozy-displayName": "Mes prêts",
   "icon-path": "logo.png",
-  "author": "me"
+  "author": "me",
+  "cozy-permissions": {
+      "contact": "Choose friends to loan to."
+  }
 }
