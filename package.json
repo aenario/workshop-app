@@ -9,5 +9,20 @@
   "cozy-permissions": {
       "contact": "Choose friends to loan to.",
       "loan": "Create and manage loans."
+  },
+  "scripts": {
+    "build": "webpack build"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "cozy-sdk": "0.0.3",
+    "cozysdk-client": "0.0.5",
+    "jsx-loader": "^0.13.2",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "webpack": "^1.13.0"
   }
 }
